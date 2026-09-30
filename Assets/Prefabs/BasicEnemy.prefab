@@ -1,5 +1,36 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &3439071969374869662
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 165890622968376207}
+  m_Layer: 0
+  m_Name: Firepoint
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &165890622968376207
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3439071969374869662}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0.04, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 7374567208918929767}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &793262532459703914
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -62,7 +93,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
-    m_AddedGameObjects: []
+    m_AddedGameObjects:
+    - targetCorrespondingSourceObject: {fileID: 7878350319992209165, guid: d948549f2571f8c4e9c2f9374db90b02, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 165890622968376207}
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: -2253911629886400664, guid: d948549f2571f8c4e9c2f9374db90b02, type: 3}
       insertIndex: -1
@@ -73,7 +107,15 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: -2253911629886400664, guid: d948549f2571f8c4e9c2f9374db90b02, type: 3}
       insertIndex: -1
       addedObject: {fileID: 7714149656226488509}
+    - targetCorrespondingSourceObject: {fileID: -2253911629886400664, guid: d948549f2571f8c4e9c2f9374db90b02, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: -2957196189444761885}
   m_SourcePrefab: {fileID: -8435245712485981826, guid: d948549f2571f8c4e9c2f9374db90b02, type: 3}
+--- !u!4 &7374567208918929767 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 7878350319992209165, guid: d948549f2571f8c4e9c2f9374db90b02, type: 3}
+  m_PrefabInstance: {fileID: 793262532459703914}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &7762590860580813058 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: -2253911629886400664, guid: d948549f2571f8c4e9c2f9374db90b02, type: 3}
@@ -136,7 +178,7 @@ PolygonCollider2D:
   m_CallbackLayers:
     serializedVersion: 2
     m_Bits: 4294967295
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
@@ -178,5 +220,23 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::BasicEnemyScript
   sceneManager: {fileID: 0}
+  shooting: {fileID: -2957196189444761885}
   borderMargin: 0.5
   speed: 5
+--- !u!114 &-2957196189444761885
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7762590860580813058}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a15a1f5f0eae26a498ca3fa7d145e240, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::BasicEnemyShooting
+  bulletPrefab: {fileID: 5288687825703072380, guid: f1d4e007b0c028344baeba16f0703fe1, type: 3}
+  firePoint: {fileID: 165890622968376207}
+  bulletSpeed: 6
+  bulletLifetime: 2
+  fireCooldown: 1.2

@@ -7,6 +7,8 @@ public class PlayerScript : MonoBehaviour
     public float speed;
     Rigidbody2D _rbody;
 
+    public int health;
+
     SceneManagerScript sceneManager;
     PlayerShooting shooting;
 
@@ -17,6 +19,10 @@ public class PlayerScript : MonoBehaviour
         _rbody = GetComponent<Rigidbody2D>();
         sceneManager = GetComponent<SceneManagerScript>();
         shooting = GetComponent<PlayerShooting>();
+        if (health <= 0)
+        {
+            health = 1;
+        }
     }
 
     // Update is called once per frame
@@ -44,5 +50,18 @@ public class PlayerScript : MonoBehaviour
         {
             shooting.Shoot();
         }
+    }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (!collision.gameObject.CompareTag("Bullet"))
+        {
+            health--;
+        }
+        if (health <= 0) 
+        {
+            Destroy(gameObject);
+        }
+
     }
 }

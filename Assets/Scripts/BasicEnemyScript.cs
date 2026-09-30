@@ -7,6 +7,8 @@ public class BasicEnemyScript : MonoBehaviour
 
     public SceneManagerScript sceneManager;
 
+    public BasicEnemyShooting shooting;
+
     SpriteRenderer spriteRenderer;
 
     public float borderMargin = 0.5f;
@@ -67,11 +69,12 @@ public class BasicEnemyScript : MonoBehaviour
         }
 
         transform.position = position;
+        shooting.Shoot();
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.gameObject.CompareTag("Bullet"))
+        if (collision.gameObject.CompareTag("Bullet") || collision.gameObject.CompareTag("Player"))
         {
             sceneManager.HitEnemy();
             Destroy(gameObject);
