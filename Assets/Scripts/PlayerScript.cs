@@ -8,6 +8,7 @@ public class PlayerScript : MonoBehaviour
     Rigidbody2D _rbody;
 
     SceneManagerScript sceneManager;
+    PlayerShooting shooting;
 
     Vector2 moveDirection = Vector2.zero;
 
@@ -15,6 +16,7 @@ public class PlayerScript : MonoBehaviour
     {
         _rbody = GetComponent<Rigidbody2D>();
         sceneManager = GetComponent<SceneManagerScript>();
+        shooting = GetComponent<PlayerShooting>();
     }
 
     // Update is called once per frame
@@ -34,5 +36,13 @@ public class PlayerScript : MonoBehaviour
     {
         moveDirection = value.Get<Vector2>();
         Debug.Log($"Movement input: {moveDirection}");
+    }
+
+    void OnFire(InputValue value)
+    {
+        if (value.isPressed)
+        {
+            shooting.Shoot();
+        }
     }
 }

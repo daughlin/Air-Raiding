@@ -12,12 +12,10 @@ public class SceneManagerScript : MonoBehaviour
 
     int score = 0;
 
-    //public GameObject _pelletPrefab;
+    public GameObject _basicEnemyPrefab;
 
-    public TMP_Text scoreText;
-    public TMP_Text timerText;
-
-    bool blackIsGood = false;
+    //public TMP_Text scoreText;
+    //public TMP_Text timerText;
 
     float endTime;
 
@@ -37,15 +35,11 @@ public class SceneManagerScript : MonoBehaviour
     {
         //if (!GameOver())
         //{
-        //    UpdateTimerText();
-        //    if (Random.value <= 0.005)
-        //    {
-        //        SpawnPellet();
-        //    }
-        //    if (Random.value <= 0.0005)
-        //    {
-        //        SwapTargetColor();
-        //    }
+            //UpdateTimerText();
+            if (Random.value <= 0.002)
+            {
+                SpawnEnemy();
+            }
         //}
         //else
         //{
@@ -91,6 +85,15 @@ public class SceneManagerScript : MonoBehaviour
 
     //}
 
+    public void HitEnemy()
+    {
+        //_audioSource.PlayOneShot(_goodHitEffect);
+        score++;
+
+        //UpdateScoreText();
+
+    }
+
     //GameObject SpawnPellet()
     //{
     //    float x = Random.Range(-9.0f, 9.0f);
@@ -114,6 +117,30 @@ public class SceneManagerScript : MonoBehaviour
     //    return newPellet;
 
     //}
+
+    GameObject SpawnEnemy()
+    {
+        float x = Random.Range(-9.0f, 9.0f);
+        float y = Random.Range(5.0f, 6.0f);
+        GameObject newEnemy = Instantiate(_basicEnemyPrefab, new Vector3(x, y, 0), Quaternion.identity);
+
+        SpriteRenderer sr = newEnemy.GetComponent<SpriteRenderer>();
+        if (sr != null)
+        {
+            //sr.color = Random.value <= 0.5 ? Color.red : Color.black;
+
+        }
+
+        BasicEnemyScript es = newEnemy.GetComponent<BasicEnemyScript>();
+
+        if (es != null)
+        {
+            es.sceneManager = this;
+        }
+
+        return newEnemy;
+
+    }
 
     //public bool GameOver()
     //{
