@@ -144,7 +144,7 @@ Transform:
   m_GameObject: {fileID: 20155898}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.432, z: 0}
+  m_LocalPosition: {x: 0, y: 0.48, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 3}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -539,6 +539,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::NewMonoBehaviourScript
   _basicEnemyPrefab: {fileID: 7762590860580813058, guid: cee1ca8c6a2c85a48b363698b4651f1a, type: 3}
+  scoreText: {fileID: 725373811}
 --- !u!4 &1084558882
 Transform:
   m_ObjectHideFlags: 0
@@ -759,6 +760,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerScript
   speed: 10
+  health: 0
 --- !u!114 &1686289012
 MonoBehaviour:
   m_ObjectHideFlags: 0
