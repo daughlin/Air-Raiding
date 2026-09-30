@@ -16,6 +16,18 @@ PrefabInstance:
       propertyPath: m_TagString
       value: Bullet
       objectReference: {fileID: 0}
+    - target: {fileID: 5413382722706889779, guid: f1d4e007b0c028344baeba16f0703fe1, type: 3}
+      propertyPath: m_IsTrigger
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6899660966806646477, guid: f1d4e007b0c028344baeba16f0703fe1, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6899660966806646477, guid: f1d4e007b0c028344baeba16f0703fe1, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0.15
+      objectReference: {fileID: 0}
     - target: {fileID: 6899660966806646477, guid: f1d4e007b0c028344baeba16f0703fe1, type: 3}
       propertyPath: m_LocalPosition.x
       value: -1.6348505
