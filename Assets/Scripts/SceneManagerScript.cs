@@ -14,7 +14,7 @@ public class SceneManagerScript : MonoBehaviour
 
     public GameObject _basicEnemyPrefab;
 
-    //public TMP_Text scoreText;
+    public TMP_Text scoreText;
     //public TMP_Text timerText;
 
     float endTime;
@@ -28,6 +28,7 @@ public class SceneManagerScript : MonoBehaviour
         //endTime = Time.time + 30.0f;
         //_audioSource = GetComponent<AudioSource>();
         //_badHitEffect = GetComponent<AudioSource>();
+        scoreText.text = "0";
     }
 
     // Update is called once per frame
@@ -88,9 +89,8 @@ public class SceneManagerScript : MonoBehaviour
     public void HitEnemy()
     {
         //_audioSource.PlayOneShot(_goodHitEffect);
-        score++;
-
-        //UpdateScoreText();
+        score += 100;
+        scoreText.text = score.ToString();
 
     }
 
