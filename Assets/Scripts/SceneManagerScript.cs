@@ -121,7 +121,7 @@ public class SceneManagerScript : MonoBehaviour
     GameObject SpawnEnemy()
     {
         float x = Random.Range(-9.0f, 9.0f);
-        float y = Random.Range(3.0f, 4.0f);
+        float y = Random.Range(5.0f, 6.0f);
         GameObject newEnemy = Instantiate(_basicEnemyPrefab, new Vector3(x, y, 0), Quaternion.identity);
 
         SpriteRenderer sr = newEnemy.GetComponent<SpriteRenderer>();
