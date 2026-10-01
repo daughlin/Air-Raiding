@@ -48,16 +48,20 @@ public class SceneManagerScript : MonoBehaviour
     {
         //if (!GameOver())
         //{
-            if(Time.time >= nextEnemySpawnTime)
+
+        if (GameObject.FindGameObjectWithTag("Boss") == null)
+        {
+
+            if (Time.time >= nextEnemySpawnTime)
             {
                 SpawnEnemy();
                 if (Random.value < 0.01)
-            {
-                SpawnEnemy();
-                SpawnEnemy();
-            }
+                {
+                    SpawnEnemy();
+                    SpawnEnemy();
+                }
                 nextEnemySpawnTime = Time.time + enemySpawnTime;
-                enemySpawnTime -= 0.02f;
+                enemySpawnTime -= 0.05f;
             }
             if (Time.time >= nextEliteSpawnTime)
             {
@@ -69,6 +73,7 @@ public class SceneManagerScript : MonoBehaviour
                 SpawnBoss();
                 nextBossSpawnTime = Time.time + bossSpawnTime;
             }
+        }
         //}
         //else
         //{

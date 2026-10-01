@@ -541,7 +541,7 @@ MonoBehaviour:
   bulletPrefab: {fileID: 6251403717180752207, guid: 223de5125c898434795ded22165d7b2a, type: 3}
   firePoint: {fileID: 7407051146049971794}
   bulletSpeed: 5
-  bulletLifetime: 6
+  bulletLifetime: 5
   fireCooldown: 1.2
 --- !u!114 &1314686801364214868
 MonoBehaviour:

@@ -867,9 +867,9 @@ MonoBehaviour:
   _elitePrefab: {fileID: 7721099724181392951, guid: 327d9cbf6a3a58647b962458c6a13c86, type: 3}
   _bossPrefab: {fileID: 969759754448869264, guid: 4800d37451e34fa4ba956708b3c89339, type: 3}
   scoreText: {fileID: 725373811}
-  eliteSpawnTime: 25
+  eliteSpawnTime: 21
   enemySpawnTime: 4
-  bossSpawnTime: 40
+  bossSpawnTime: 60
 --- !u!4 &1084558882
 Transform:
   m_ObjectHideFlags: 0
