@@ -139,7 +139,7 @@ public class SceneManagerScript : MonoBehaviour
     {
         float x = Random.Range(-9.0f, 9.0f);
         float y = Random.Range(5.0f, 6.0f);
-        GameObject newEnemy = Instantiate(_basicEnemyPrefab, new Vector3(x, y, 0), Quaternion.identity);
+        GameObject newEnemy = Instantiate(_basicEnemyPrefab, new Vector3(x, y, 0), Quaternion.Euler(0f, 0f, 180f));
 
         SpriteRenderer sr = newEnemy.GetComponent<SpriteRenderer>();
         if (sr != null)
@@ -162,8 +162,8 @@ public class SceneManagerScript : MonoBehaviour
     GameObject SpawnBoss()
     {
         float x = Random.Range(-9.0f, 9.0f);
-        float y = Random.Range(5.0f, 5.0f);
-        GameObject newBoss = Instantiate(_bossPrefab, new Vector3(x, y, 0), Quaternion.identity);
+        float y = Random.Range(7f, 7f);
+        GameObject newBoss = Instantiate(_bossPrefab, new Vector3(x, y, 0), Quaternion.Euler(0f, 0f, 180f));
 
         SpriteRenderer sr = newBoss.GetComponent<SpriteRenderer>();
         if (sr != null)

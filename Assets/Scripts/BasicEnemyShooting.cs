@@ -34,7 +34,7 @@ public class BasicEnemyShooting : MonoBehaviour
             );
 
             bullet.linearVelocity =
-                (Vector2)firePoint.up * bulletSpeed * -1;
+                (Vector2)firePoint.up * bulletSpeed;
 
             Destroy(bullet.gameObject, bulletLifetime);
 
