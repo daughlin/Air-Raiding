@@ -14,10 +14,15 @@ public class SceneManagerScript : MonoBehaviour
 
     public GameObject _basicEnemyPrefab;
 
+    public GameObject _bossPrefab;
+
     public TMP_Text scoreText;
     //public TMP_Text timerText;
 
-    float endTime;
+    private float nextBossSpawnTime;
+    public float bossSpawnTime;
+    private float nextEnemySpawnTime;
+    public float enemySpawnTime;
 
 
 
@@ -25,7 +30,8 @@ public class SceneManagerScript : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        //endTime = Time.time + 30.0f;
+        nextBossSpawnTime = Time.time + bossSpawnTime;
+        nextEnemySpawnTime = Time.time + enemySpawnTime;
         //_audioSource = GetComponent<AudioSource>();
         //_badHitEffect = GetComponent<AudioSource>();
         scoreText.text = "0";
@@ -36,10 +42,21 @@ public class SceneManagerScript : MonoBehaviour
     {
         //if (!GameOver())
         //{
-            //UpdateTimerText();
-            if (Random.value <= 0.002)
+            if(Time.time >= nextEnemySpawnTime)
             {
                 SpawnEnemy();
+                if (Random.value < 0.01)
+            {
+                SpawnEnemy();
+                SpawnEnemy();
+            }
+                nextEnemySpawnTime = Time.time + enemySpawnTime;
+                enemySpawnTime -= 0.02f;
+            }
+            if (Time.time >= nextBossSpawnTime)
+            {
+                SpawnBoss();
+                nextBossSpawnTime = Time.time + bossSpawnTime;
             }
         //}
         //else
@@ -139,6 +156,30 @@ public class SceneManagerScript : MonoBehaviour
         }
 
         return newEnemy;
+
+    }
+
+    GameObject SpawnBoss()
+    {
+        float x = Random.Range(-9.0f, 9.0f);
+        float y = Random.Range(5.0f, 5.0f);
+        GameObject newBoss = Instantiate(_bossPrefab, new Vector3(x, y, 0), Quaternion.identity);
+
+        SpriteRenderer sr = newBoss.GetComponent<SpriteRenderer>();
+        if (sr != null)
+        {
+            //sr.color = Random.value <= 0.5 ? Color.red : Color.black;
+
+        }
+
+        MissileEnemyScript es = newBoss.GetComponent<MissileEnemyScript>();
+
+        if (es != null)
+        {
+            es.sceneManager = this;
+        }
+
+        return newBoss;
 
     }
 

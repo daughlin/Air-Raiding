@@ -539,7 +539,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::NewMonoBehaviourScript
   _basicEnemyPrefab: {fileID: 7762590860580813058, guid: cee1ca8c6a2c85a48b363698b4651f1a, type: 3}
+  _bossPrefab: {fileID: 7721099724181392951, guid: 327d9cbf6a3a58647b962458c6a13c86, type: 3}
   scoreText: {fileID: 725373811}
+  bossSpawnTime: 20
+  enemySpawnTime: 4
 --- !u!4 &1084558882
 Transform:
   m_ObjectHideFlags: 0
@@ -760,7 +763,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerScript
   speed: 10
-  health: 0
+  health: 5
 --- !u!114 &1686289012
 MonoBehaviour:
   m_ObjectHideFlags: 0
