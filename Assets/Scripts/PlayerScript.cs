@@ -6,6 +6,8 @@ public class PlayerScript : MonoBehaviour
 {
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     public float speed;
+
+    private HitIndicator hitIndicator;
     Rigidbody2D _rbody;
 
     public int health;
@@ -25,6 +27,7 @@ public class PlayerScript : MonoBehaviour
         _rbody = GetComponent<Rigidbody2D>();
         sceneManager = GetComponent<SceneManagerScript>();
         shooting = GetComponent<PlayerShooting>();
+        hitIndicator = GetComponent<HitIndicator>();
         if (health <= 0)
         {
             health = 1;
@@ -88,6 +91,7 @@ public class PlayerScript : MonoBehaviour
         if (!collision.gameObject.CompareTag("Bullet"))
         {
             health--;
+            hitIndicator.ShowHit();
             UpdateLives();
         }
         if (health <= 0) 

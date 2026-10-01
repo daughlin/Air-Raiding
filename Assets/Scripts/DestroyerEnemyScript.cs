@@ -1,13 +1,15 @@
+using Unity.VisualScripting;
 using UnityEngine;
 
-public class MissileEnemyScript : MonoBehaviour
+public class DestroyerEnemyScript : MonoBehaviour
 {
 
     public int health;
     private HitIndicator hitIndicator;
     public SceneManagerScript sceneManager;
 
-    public BasicEnemyShooting shooting;
+    public EliteEnemyShooting guns;
+    public EliteEnemyShooting missiles;
 
     SpriteRenderer spriteRenderer;
 
@@ -25,7 +27,7 @@ public class MissileEnemyScript : MonoBehaviour
 
         if (health <= 0)
         {
-            health = 2;
+            health = 10;
         }
         hitIndicator = GetComponent<HitIndicator>();
         spriteRenderer = GetComponent<SpriteRenderer>();
@@ -75,7 +77,10 @@ public class MissileEnemyScript : MonoBehaviour
         }
 
         transform.position = position;
-        shooting.Shoot();
+
+        guns.Shoot();
+        missiles.Shoot();
+        
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
