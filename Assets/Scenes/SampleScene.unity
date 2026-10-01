@@ -710,6 +710,11 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: -8435245712485981826, guid: 2bbb03b45cb593f4587b47e417b36dc5, type: 3}
+--- !u!4 &833033802 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 7878350319992209165, guid: 2bbb03b45cb593f4587b47e417b36dc5, type: 3}
+  m_PrefabInstance: {fileID: 748410753}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1084558880
 GameObject:
   m_ObjectHideFlags: 0
@@ -926,7 +931,7 @@ PrefabInstance:
     m_AddedGameObjects:
     - targetCorrespondingSourceObject: {fileID: 7878350319992209165, guid: d2a33c5c437d0084a9cf68f94fad7243, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 93117621}
+      addedObject: {fileID: 833033802}
     - targetCorrespondingSourceObject: {fileID: 7878350319992209165, guid: d2a33c5c437d0084a9cf68f94fad7243, type: 3}
       insertIndex: -1
       addedObject: {fileID: 20155899}
@@ -970,6 +975,9 @@ MonoBehaviour:
   speed: 10
   health: 5
   lives: {fileID: 280733544}
+  spriteVisual: {fileID: 1686289016}
+  tiltAngle: 60
+  tiltSpeed: 20
 --- !u!114 &1686289012
 MonoBehaviour:
   m_ObjectHideFlags: 0
