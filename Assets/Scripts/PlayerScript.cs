@@ -1,3 +1,4 @@
+using TMPro;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -8,6 +9,7 @@ public class PlayerScript : MonoBehaviour
     Rigidbody2D _rbody;
 
     public int health;
+    public TMP_Text lives;
 
     SceneManagerScript sceneManager;
     PlayerShooting shooting;
@@ -23,6 +25,7 @@ public class PlayerScript : MonoBehaviour
         {
             health = 1;
         }
+        UpdateLives();
     }
 
     // Update is called once per frame
@@ -52,11 +55,23 @@ public class PlayerScript : MonoBehaviour
         }
     }
 
+    void UpdateLives()
+    {
+
+        lives.text = "";
+        for (int i = 0; i < health; i++)
+        {
+            lives.text += "<3 ";
+            Debug.Log("i=" + i);
+        }
+    }
+
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (!collision.gameObject.CompareTag("Bullet"))
         {
             health--;
+            UpdateLives();
         }
         if (health <= 0) 
         {
