@@ -80,8 +80,12 @@ public class MissileEnemyScript : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Bullet") || collision.gameObject.CompareTag("Player"))
         {
-            sceneManager.HitEnemy();
-            Destroy(gameObject);
+            health--;
+            if (health <= 0)
+            {
+                sceneManager.HitEnemy();
+                Destroy(gameObject);
+            }
         }
     }
 }
