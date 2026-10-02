@@ -10,6 +10,9 @@ public class PlayerShooting : MonoBehaviour
     [SerializeField] private float bulletLifetime = 2f;
     [SerializeField] private float fireCooldown = 0.2f;
 
+
+    
+
     private float nextFireTime;
 
     void Update()
@@ -24,6 +27,7 @@ public class PlayerShooting : MonoBehaviour
 
     public void Shoot()
     {
+
         Rigidbody2D bullet = Instantiate(
             bulletPrefab,
             firePoint.position,

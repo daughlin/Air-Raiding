@@ -20,10 +20,15 @@ public class PlayerScript : MonoBehaviour
     SceneManagerScript sceneManager;
     PlayerShooting shooting;
 
+    public AudioClip _badHitEffect;
+
+    AudioSource _audioSource;
+
     Vector2 moveDirection = Vector2.zero;
 
     void Start()
     {
+        _audioSource = GetComponent<AudioSource>();
         _rbody = GetComponent<Rigidbody2D>();
         sceneManager = GetComponent<SceneManagerScript>();
         shooting = GetComponent<PlayerShooting>();
@@ -71,6 +76,7 @@ public class PlayerScript : MonoBehaviour
     {
         if (value.isPressed)
         {
+            _audioSource.PlayOneShot(_badHitEffect);
             shooting.Shoot();
         }
     }
