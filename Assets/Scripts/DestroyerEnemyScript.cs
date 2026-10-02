@@ -3,7 +3,9 @@ using UnityEngine;
 
 public class DestroyerEnemyScript : MonoBehaviour
 {
+    public AudioClip _badHitEffect;
 
+    AudioSource _audioSource;
     public int health;
     private HitIndicator hitIndicator;
     public SceneManagerScript sceneManager;
@@ -24,7 +26,7 @@ public class DestroyerEnemyScript : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-
+        _audioSource = GetComponent<AudioSource>();
         if (health <= 0)
         {
             health = 10;
@@ -89,6 +91,7 @@ public class DestroyerEnemyScript : MonoBehaviour
         {
             health--;
             hitIndicator.ShowHit();
+            _audioSource.PlayOneShot(_badHitEffect);
             if (health <= 0)
             {
                 sceneManager.HitEnemy(500);

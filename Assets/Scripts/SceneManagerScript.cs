@@ -12,6 +12,12 @@ public class SceneManagerScript : MonoBehaviour
 
     //AudioSource _audioSource;
 
+    public AudioClip _badHitEffect;
+
+    AudioSource _audioSource;
+
+
+
     int score = 0;
 
     public GameObject _basicEnemyPrefab;
@@ -52,6 +58,7 @@ public class SceneManagerScript : MonoBehaviour
         //_audioSource = GetComponent<AudioSource>();
         //_badHitEffect = GetComponent<AudioSource>();
         scoreText.text = "0";
+        _audioSource = GetComponent<AudioSource>();
     }
 
     // Update is called once per frame
@@ -144,7 +151,7 @@ public class SceneManagerScript : MonoBehaviour
 
     public void HitEnemy(int value)
     {
-        //_audioSource.PlayOneShot(_goodHitEffect);
+        _audioSource.PlayOneShot(_badHitEffect);
         score += value;
         scoreText.text = score.ToString();
 

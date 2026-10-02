@@ -4,6 +4,9 @@ using UnityEngine;
 public class BasicEnemyScript : MonoBehaviour
 {
 
+    public AudioClip _badHitEffect;
+
+    AudioSource _audioSource;
 
     public SceneManagerScript sceneManager;
 
@@ -22,6 +25,8 @@ public class BasicEnemyScript : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
+
+        _audioSource = GetComponent<AudioSource>();
         spriteRenderer = GetComponent<SpriteRenderer>();
 
         if (sceneManager == null)
@@ -76,6 +81,7 @@ public class BasicEnemyScript : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Bullet") || collision.gameObject.CompareTag("Player"))
         {
+            _audioSource.PlayOneShot(_badHitEffect);
             sceneManager.HitEnemy(100);
             Destroy(gameObject);
         }
