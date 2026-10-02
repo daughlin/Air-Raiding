@@ -15,6 +15,7 @@ public class SceneManagerScript : MonoBehaviour
     public GameObject _basicEnemyPrefab;
 
     public GameObject _bossPrefab;
+    public GameObject _starPrefab;
 
     public TMP_Text scoreText;
     //public TMP_Text timerText;
@@ -23,6 +24,8 @@ public class SceneManagerScript : MonoBehaviour
     public float bossSpawnTime;
     private float nextEnemySpawnTime;
     public float enemySpawnTime;
+    public float starSpawnTime; 
+    private float nextStarSpawnTime;
 
 
 
@@ -32,6 +35,12 @@ public class SceneManagerScript : MonoBehaviour
     {
         nextBossSpawnTime = Time.time + bossSpawnTime;
         nextEnemySpawnTime = Time.time + enemySpawnTime;
+        for (int i=0; i<100; i++)
+        {
+            SpawnStar(true);
+            SpawnStar();
+        }
+        nextStarSpawnTime = Time.time + starSpawnTime;
         //_audioSource = GetComponent<AudioSource>();
         //_badHitEffect = GetComponent<AudioSource>();
         scoreText.text = "0";
@@ -57,6 +66,14 @@ public class SceneManagerScript : MonoBehaviour
             {
                 SpawnBoss();
                 nextBossSpawnTime = Time.time + bossSpawnTime;
+            }
+            if (Time.time >= nextStarSpawnTime)
+            {
+               for (int i = 0; i < 100; i++)
+               {
+                  SpawnStar();
+               }
+            nextStarSpawnTime = Time.time + starSpawnTime;
             }
         //}
         //else
@@ -181,6 +198,17 @@ public class SceneManagerScript : MonoBehaviour
 
         return newBoss;
 
+    }
+
+    GameObject SpawnStar(bool initial=false)
+    {
+        float x = Random.Range(-9.0f, 9.0f);
+        float y = Random.Range(5.0f, 14.0f);
+        if (initial) { //initially appear on screen
+            y -= 9.0f;
+        }
+        GameObject newStar = Instantiate(_starPrefab, new Vector3(x, y, 0), Quaternion.identity);
+        return newStar;
     }
 
     //public bool GameOver()
