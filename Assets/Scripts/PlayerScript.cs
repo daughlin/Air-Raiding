@@ -25,7 +25,7 @@ public class PlayerScript : MonoBehaviour
     void Start()
     {
         _rbody = GetComponent<Rigidbody2D>();
-        sceneManager = GetComponent<SceneManagerScript>();
+        sceneManager = FindAnyObjectByType<SceneManagerScript>();
         shooting = GetComponent<PlayerShooting>();
         hitIndicator = GetComponent<HitIndicator>();
         if (health <= 0)
@@ -96,7 +96,9 @@ public class PlayerScript : MonoBehaviour
         }
         if (health <= 0) 
         {
+            sceneManager.GameOver();
             Destroy(gameObject);
+            //sceneManager.GameOver();
         }
 
     }
