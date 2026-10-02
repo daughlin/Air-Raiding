@@ -1,10 +1,9 @@
 using UnityEngine;
-using UnityEngine.InputSystem;
 
-public class BasicEnemyShooting : MonoBehaviour
+public class EliteEnemyShooting : MonoBehaviour
 {
     [SerializeField] private Rigidbody2D bulletPrefab;
-    [SerializeField] private Transform firePoint;
+    [SerializeField] private Transform[] firePoints;
 
     [SerializeField] private float bulletSpeed = 12f;
     [SerializeField] private float bulletLifetime = 2f;
@@ -12,21 +11,15 @@ public class BasicEnemyShooting : MonoBehaviour
 
     private float nextFireTime;
 
-    void Update()
-    {
-        //if (Keyboard.current != null &&
-        //    Keyboard.current.spaceKey.wasPressedThisFrame &&
-        //    Time.time >= nextFireTime)
-        //{
-        //    Shoot();
-        //}
-    }
-
     public void Shoot()
     {
-        if (Time.time >= nextFireTime)
+        if (Time.time < nextFireTime)
         {
+            return;
+        }
 
+        foreach (Transform firePoint in firePoints)
+        {
             Rigidbody2D bullet = Instantiate(
                 bulletPrefab,
                 firePoint.position,
@@ -37,8 +30,8 @@ public class BasicEnemyShooting : MonoBehaviour
                 (Vector2)firePoint.up * bulletSpeed;
 
             Destroy(bullet.gameObject, bulletLifetime);
-
-            nextFireTime = Time.time + fireCooldown;
         }
+
+        nextFireTime = Time.time + fireCooldown;
     }
 }

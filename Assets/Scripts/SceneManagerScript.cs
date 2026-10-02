@@ -14,18 +14,23 @@ public class SceneManagerScript : MonoBehaviour
 
     public GameObject _basicEnemyPrefab;
 
+    public GameObject _elitePrefab;
+
     public GameObject _bossPrefab;
     public GameObject _starPrefab;
 
     public TMP_Text scoreText;
     //public TMP_Text timerText;
 
-    private float nextBossSpawnTime;
-    public float bossSpawnTime;
+    private float nextEliteSpawnTime;
+    public float eliteSpawnTime;
     private float nextEnemySpawnTime;
     public float enemySpawnTime;
     public float starSpawnTime; 
     private float nextStarSpawnTime;
+
+    private float nextBossSpawnTime;
+    public float bossSpawnTime;
 
 
 
@@ -34,6 +39,7 @@ public class SceneManagerScript : MonoBehaviour
     void Start()
     {
         nextBossSpawnTime = Time.time + bossSpawnTime;
+        nextEliteSpawnTime = Time.time + eliteSpawnTime;
         nextEnemySpawnTime = Time.time + enemySpawnTime;
         for (int i=0; i<100; i++)
         {
@@ -51,16 +57,25 @@ public class SceneManagerScript : MonoBehaviour
     {
         //if (!GameOver())
         //{
-            if(Time.time >= nextEnemySpawnTime)
+
+        if (GameObject.FindGameObjectWithTag("Boss") == null)
+        {
+
+            if (Time.time >= nextEnemySpawnTime)
             {
                 SpawnEnemy();
                 if (Random.value < 0.01)
-            {
-                SpawnEnemy();
-                SpawnEnemy();
-            }
+                {
+                    SpawnEnemy();
+                    SpawnEnemy();
+                }
                 nextEnemySpawnTime = Time.time + enemySpawnTime;
-                enemySpawnTime -= 0.02f;
+                enemySpawnTime -= 0.05f;
+            }
+            if (Time.time >= nextEliteSpawnTime)
+            {
+                SpawnElite();
+                nextEliteSpawnTime = Time.time + eliteSpawnTime;
             }
             if (Time.time >= nextBossSpawnTime)
             {
@@ -156,7 +171,7 @@ public class SceneManagerScript : MonoBehaviour
     {
         float x = Random.Range(-9.0f, 9.0f);
         float y = Random.Range(5.0f, 6.0f);
-        GameObject newEnemy = Instantiate(_basicEnemyPrefab, new Vector3(x, y, 0), Quaternion.identity);
+        GameObject newEnemy = Instantiate(_basicEnemyPrefab, new Vector3(x, y, 0), Quaternion.Euler(0f, 0f, 180f));
 
         SpriteRenderer sr = newEnemy.GetComponent<SpriteRenderer>();
         if (sr != null)
@@ -176,11 +191,35 @@ public class SceneManagerScript : MonoBehaviour
 
     }
 
+    GameObject SpawnElite()
+    {
+        float x = Random.Range(-9.0f, 9.0f);
+        float y = Random.Range(7f, 7f);
+        GameObject newElite = Instantiate(_elitePrefab, new Vector3(x, y, 0), Quaternion.Euler(0f, 0f, 180f));
+
+        SpriteRenderer sr = newElite.GetComponent<SpriteRenderer>();
+        if (sr != null)
+        {
+            //sr.color = Random.value <= 0.5 ? Color.red : Color.black;
+
+        }
+
+        MissileEnemyScript es = newElite.GetComponent<MissileEnemyScript>();
+
+        if (es != null)
+        {
+            es.sceneManager = this;
+        }
+
+        return newElite;
+
+    }
+
     GameObject SpawnBoss()
     {
         float x = Random.Range(-9.0f, 9.0f);
-        float y = Random.Range(5.0f, 5.0f);
-        GameObject newBoss = Instantiate(_bossPrefab, new Vector3(x, y, 0), Quaternion.identity);
+        float y = Random.Range(8f, 8f);
+        GameObject newBoss = Instantiate(_bossPrefab, new Vector3(x, y, 0), Quaternion.Euler(0f, 0f, 180f));
 
         SpriteRenderer sr = newBoss.GetComponent<SpriteRenderer>();
         if (sr != null)
@@ -189,7 +228,7 @@ public class SceneManagerScript : MonoBehaviour
 
         }
 
-        MissileEnemyScript es = newBoss.GetComponent<MissileEnemyScript>();
+        DestroyerEnemyScript es = newBoss.GetComponent<DestroyerEnemyScript>();
 
         if (es != null)
         {
