@@ -871,7 +871,7 @@ MonoBehaviour:
   eliteSpawnTime: 21
   enemySpawnTime: 4
   starSpawnTime: 5
-  bossSpawnTime: 10
+  bossSpawnTime: 60
 --- !u!4 &1084558882
 Transform:
   m_ObjectHideFlags: 0
