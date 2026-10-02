@@ -28,7 +28,8 @@ public class SceneManagerScript : MonoBehaviour
     public GameObject _starPrefab;
 
     public TMP_Text scoreText;
-    //public TMP_Text timerText;
+    public GameObject gameOverText;
+    public GameObject exitText;
 
     private float nextEliteSpawnTime;
     public float eliteSpawnTime;
@@ -58,6 +59,8 @@ public class SceneManagerScript : MonoBehaviour
         //_audioSource = GetComponent<AudioSource>();
         //_badHitEffect = GetComponent<AudioSource>();
         scoreText.text = "0";
+        gameOverText.SetActive(false);
+        exitText.SetActive(false);
         _audioSource = GetComponent<AudioSource>();
     }
 
@@ -95,20 +98,21 @@ public class SceneManagerScript : MonoBehaviour
                 SpawnBoss();
                 nextBossSpawnTime = Time.time + bossSpawnTime;
             }
-            if (Time.time >= nextStarSpawnTime)
-            {
-                Debug.Log("spawining set of stars");
-                for (int i = 0; i<100; i++)
-                {
-                    SpawnStar();
-                }
-                nextStarSpawnTime = Time.time + starSpawnTime;
-            }
+       
             //}
             //else
             //{
             //    timerText.text = "GAME OVER!!";
             //}
+        }
+        if (Time.time >= nextStarSpawnTime)
+        {
+            Debug.Log("spawining set of stars");
+            for (int i = 0; i < 100; i++)
+            {
+                SpawnStar();
+            }
+            nextStarSpawnTime = Time.time + starSpawnTime;
         }
     }
 
@@ -269,5 +273,13 @@ public class SceneManagerScript : MonoBehaviour
     //    return endTime - Time.time <= 0;
     //}
 
-
+    public void GameOver()
+    {
+        if (score >= PlayerPrefs.GetInt("highScore"))
+        {
+            PlayerPrefs.SetInt("highScore", score);
+        }
+        gameOverText.SetActive(true);
+        exitText.SetActive(true);
+    }
 }
