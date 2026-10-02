@@ -142,10 +142,10 @@ public class SceneManagerScript : MonoBehaviour
 
     //}
 
-    public void HitEnemy()
+    public void HitEnemy(int value)
     {
         //_audioSource.PlayOneShot(_goodHitEffect);
-        score += 100;
+        score += value;
         scoreText.text = score.ToString();
 
     }

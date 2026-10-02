@@ -86,7 +86,7 @@ public class MissileEnemyScript : MonoBehaviour
             hitIndicator.ShowHit();
             if (health <= 0)
             {
-                sceneManager.HitEnemy();
+                sceneManager.HitEnemy(200);
                 Destroy(gameObject);
             }
         }

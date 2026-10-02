@@ -91,7 +91,7 @@ public class DestroyerEnemyScript : MonoBehaviour
             hitIndicator.ShowHit();
             if (health <= 0)
             {
-                sceneManager.HitEnemy();
+                sceneManager.HitEnemy(500);
                 Destroy(gameObject);
             }
         }

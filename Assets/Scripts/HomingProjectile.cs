@@ -1,9 +1,11 @@
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 [RequireComponent(typeof(Rigidbody2D))]
 public class HomingProjectile : MonoBehaviour
 {
     public float turnSpeed = 25f;
+    public SceneManagerScript sceneManager;
 
     private Rigidbody2D rb;
     private Transform player;
@@ -13,6 +15,10 @@ public class HomingProjectile : MonoBehaviour
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
+        if (sceneManager == null)
+        {
+            sceneManager = FindAnyObjectByType<SceneManagerScript>();
+        }
 
         // Use the velocity assigned by the enemy's Shoot() method.
         speed = rb.linearVelocity.magnitude;
@@ -53,6 +59,7 @@ public class HomingProjectile : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Bullet") || collision.gameObject.CompareTag("Player"))
         {
+            sceneManager.HitEnemy(10);
             Destroy(gameObject);
         }
     }
