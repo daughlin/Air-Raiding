@@ -84,18 +84,19 @@ public class SceneManagerScript : MonoBehaviour
             }
             if (Time.time >= nextStarSpawnTime)
             {
-               for (int i = 0; i < 100; i++)
-               {
-                  SpawnStar();
-               }
-            nextStarSpawnTime = Time.time + starSpawnTime;
+                Debug.Log("spawining set of stars");
+                for (int i = 0; i<100; i++)
+                {
+                    SpawnStar();
+                }
+                nextStarSpawnTime = Time.time + starSpawnTime;
             }
-        //}
-        //else
-        //{
-        //    timerText.text = "GAME OVER!!";
-        //}
-
+            //}
+            //else
+            //{
+            //    timerText.text = "GAME OVER!!";
+            //}
+        }
     }
 
     //void UpdateScoreText()

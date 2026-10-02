@@ -23,7 +23,7 @@ public class StarScript : MonoBehaviour
         //Vector3 position = transform.position;
         //position.y += -1 * speed * Time.deltaTime;
         //transform.position = position;
-        if (transform.position.y <= -4)
+        if (transform.position.y <= -5)
         {
             Destroy(gameObject);
         }
