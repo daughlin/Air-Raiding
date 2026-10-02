@@ -76,7 +76,7 @@ public class BasicEnemyScript : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Bullet") || collision.gameObject.CompareTag("Player"))
         {
-            sceneManager.HitEnemy();
+            sceneManager.HitEnemy(100);
             Destroy(gameObject);
         }
     }
