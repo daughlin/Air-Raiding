@@ -1,5 +1,7 @@
 using TMPro;
 using UnityEngine;
+using UnityEngine.InputSystem;
+using UnityEngine.SceneManagement;
 [RequireComponent(typeof(AudioSource))]
 
 public class SceneManagerScript : MonoBehaviour
@@ -57,6 +59,10 @@ public class SceneManagerScript : MonoBehaviour
     {
         //if (!GameOver())
         //{
+        if (Keyboard.current.escapeKey.wasPressedThisFrame)
+        {
+            SceneManager.LoadScene("MenuScene");
+        }
 
         if (GameObject.FindGameObjectWithTag("Boss") == null)
         {
